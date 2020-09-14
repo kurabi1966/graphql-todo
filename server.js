@@ -2,11 +2,17 @@ const express = require("express");
 const {ApolloServer} = require("apollo-server-express");
 const cors = require("cors");
 const dotEnv = require("dotenv");
+const { connection } = require("./database/utils");
+
 //==========================================================
 const resolvers = require('./resolvers')
 const typeDefs = require('./typeDefs')
 // setup environment variables
 dotEnv.config();
+
+// DB Connection:
+
+connection();
 // Express Server
 const app = express();
 //  Enable Cors
